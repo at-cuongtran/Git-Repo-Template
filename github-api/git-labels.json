@@ -1,0 +1,97 @@
+[
+  {
+    "name": "[Rank] A - High",
+    "color": "c94d3a",
+    "description": ""
+  },
+  {
+    "name": "[Rank] B - Normal",
+    "color": "5c607e",
+    "description": ""
+  },
+  {
+    "name": "[Rank] C - Low",
+    "color": "a8a4b9",
+    "description": ""
+  },
+  {
+    "name": "[Rank] D - Lowest",
+    "color": "c9c5d5",
+    "description": ""
+  },
+  {
+    "name": "[Rank] S - Highest",
+    "color": "a80909",
+    "description": ""
+  },
+  {
+    "name": "[Status] 01 - New",
+    "color": "a2eeef",
+    "description": "Every new Issue/Task should be always created with this status."
+  },
+  {
+    "name": "[Status] 02 - In-Progress",
+    "color": "89bff8",
+    "description": "Starts working on the issue"
+  },
+  {
+    "name": "[Status] 03 - Pending",
+    "color": "fef2c0",
+    "description": ""
+  },
+  {
+    "name": "[Status] 04 - Fixed",
+    "color": "0075ca",
+    "description": "Once developer have referenced this issue in a Pull Request"
+  },
+  {
+    "name": "[Status] 05 - Reviewed",
+    "color": "4a6985",
+    "description": "The issue/task is reviewed and merged to major branch develop/master"
+  },
+  {
+    "name": "[Status] 06 - Resolved",
+    "color": "a2d895",
+    "description": "The issue/task is deployed on STG"
+  },
+  {
+    "name": "[Status] 07 - Testing",
+    "color": "23c1dd",
+    "description": ""
+  },
+  {
+    "name": "[Status] 08 - Reopened",
+    "color": "ff6600",
+    "description": "The issue/task is reopened"
+  },
+  {
+    "name": "[Status] 09 - Done",
+    "color": "75b34c",
+    "description": ""
+  },
+  {
+    "name": "[Type] - Bug",
+    "color": "b60205",
+    "description": "Bugs raised by QC or internal team"
+  },
+  {
+    "name": "[Type] - Bug Client",
+    "color": "d73a4a",
+    "description": "Bugs raised by the Client"
+  },
+  {
+    "name": "[Type] - Feature",
+    "color": "1abaac",
+    "description": ""
+  },
+  {
+    "name": "[Type] - Task",
+    "color": "cfd3d7",
+    "description": "Tasks that do not contribute directly"
+  },
+  {
+    "name": "wontfix",
+    "color": "ffffff",
+    "description": "This will not be worked on"
+  }
+]
