@@ -1,4 +1,4 @@
-const labels = require('./git-labels');
+const labels = require('../git-labels');
 const readline = require('readline');
 const httpRequest = require('./http-request');
 
