@@ -1,6 +1,5 @@
 const saveToFile = require('./save-to-file');
 const httpRequest = require('./http-request');
-const {createUserInput} = require('./create-user-input');
 const config = require('./env.json');
 
 console.log(`This script will get the GitHub labels from a repo to a JSON file\n`);

@@ -1,4 +1,4 @@
-const labels = require('../git-labels');
+const labels = require('../labels');
 const httpRequest = require('./http-request');
 const config = require('./env.json');
 
