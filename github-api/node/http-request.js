@@ -21,9 +21,9 @@ const httpRequest = (ops, success, error) => {
 
     // The whole response has been received. Print out the result.
     res.on('end', () => {
-      console.log(data);
+      // console.log(data);
 
-      console.log('\n', JSON.parse(data || 'null'));
+      // console.log('\n', JSON.parse(data || 'null'));
       success && success(JSON.parse(data || 'null'));
     });
   });
