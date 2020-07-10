@@ -1,5 +1,5 @@
 
-const httpRequest = require('./http-request');
+const httpRequest = require('../../common/http-request');
 const config = require('./env.json');
 const PORT = config.PORT || 443;
 

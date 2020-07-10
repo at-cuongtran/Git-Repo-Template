@@ -1,5 +1,5 @@
 const labels = require('../labels');
-const httpRequest = require('./http-request');
+const httpRequest = require('../../common/http-request');
 const config = require('./env.json');
 
 console.log(`This script will remove the GitHub default labels 
