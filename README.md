@@ -1,1 +1,1 @@
-# Working with git via code
+# Working with git via cli interface
