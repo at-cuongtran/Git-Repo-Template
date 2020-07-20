@@ -5,6 +5,7 @@ const { getCurrentBranch, getLastCommit } = require('../../common/git')
 const {config} = require('./config');
 const {getMe} = require('./user-me-GET');
 const {getLabels} = require('./labels-GET');
+const {updateIssues} = require('./issues-PUT');
 
 const main = async () => {
 
@@ -71,8 +72,7 @@ const main = async () => {
     console.log('\n\n\n\n')
     console.log(res.web_url);
   })
-
-  // rl.close()
+  updateIssues()
 }
 
 main();
