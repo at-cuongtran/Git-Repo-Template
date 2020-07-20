@@ -1,22 +1,28 @@
 const httpRequest = require('../../common/http-request');
-const config = require('../env.json');
 const {createUserInput} = require('../../common/create-use-input');
 const { mrTemplate, PRExample } = require('./merge-requests-template');
 const { getCurrentBranch, getLastCommit } = require('../../common/git')
-
-const PORT = config.PORT || 443;
-const assigneeID = 127 // me
-
-const labelsMapping = {
-  1: '[Type] 01 - Feature',
-  2: '[Type] 03 - Bug'
-}
+const {config} = require('./config');
+const {getMe} = require('./user-me-GET');
+const {getLabels} = require('./labels-GET');
 
 const main = async () => {
+
+  let labels;
+  let myId;
+
+  getLabels().then(v => {
+    labels = v;
+  })
+
+  getMe().then(v => {
+    myId = v.id
+  })
+  
   const currentBranch = await getCurrentBranch();
   const sourceBranch = await createUserInput('\nSource Branch - default: current branch: ' + currentBranch);
 
-  const targetBranch = await createUserInput('\ntarget Branch - default: develop: ');
+  const targetBranch = await createUserInput(`\ntarget Branch - default: ${config.TARGET_BRANCH}: `);
 
   const lastCommit = await getLastCommit();
   const title = await createUserInput('\nTitle - default: last commit: ' + lastCommit);
@@ -24,26 +30,36 @@ const main = async () => {
   console.log('\n', PRExample, '\n');
   
   const content = await createUserInput('\nContent: ');
-  
-  console.log('\nLabels:\n', labelsMapping);
-  const label = await createUserInput('(1 or 2) - default: 2: ');
+
+  console.log('\nLabels:\n', labels);
+  const labelIds = await createUserInput('Label ids, seperate by comma: ');
+
+  const labelsStr = labelIds && labelIds.split(',').map(v => {
+    const labelObj = labels.find(l => +l.id === +(v || '').trim())
+    return labelObj.name;
+  }).join(',') || '';
+
+  console.log(labelsStr);
+
+  console.log('getting user profile...\n');
+  console.log('Your id: ', myId);
 
   const data = {
     id: config.PROJECT_ID,
     source_branch: sourceBranch || currentBranch,
-    target_branch: targetBranch || 'develop',
+    target_branch: targetBranch || config.TARGET_BRANCH,
     title: title || lastCommit,
-    assignee_id: assigneeID,
+    assignee_id: myId,
     description: mrTemplate(content),
-    labels: `[Rank] B - Normal,[Status] 03 - Fixed,${labelsMapping[label || 1]}`
+    labels: `[Rank] B - Normal,[Status] 03 - Fixed,${labelsStr}`
   }
 
   console.log(data);
 
   httpRequest({
     host: config.BASE_GIT_API_HOST,
-    port: PORT,
-    path: '/api/v4/projects/50/merge_requests',
+    port: config.PORT,
+    path: `/api/v4/projects/${config.PROJECT_ID}/merge_requests`,
     headers: {
       'Private-Token': config.PRIVATE_TOKEN,
       'Content-Type': "application/json"
@@ -56,7 +72,7 @@ const main = async () => {
     console.log(res.web_url);
   })
 
-  rl.close()
+  // rl.close()
 }
 
 main();

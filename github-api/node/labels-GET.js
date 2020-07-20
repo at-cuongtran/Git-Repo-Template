@@ -17,5 +17,5 @@ httpRequest({
   method: 'GET',
 }, res => {
   d = res.map(({name, color, description}) => ({name, color, description}));
-  saveToFile(repo.split('/')[1] + '.json', d);
+  saveToFile(config.REPO.split('/')[1] + '.json', d);
 })

@@ -11,7 +11,7 @@ const httpRequest = (ops, success, error) => {
     },
     method: ops.method,
   }, res => {
-    console.log(`statusCode: ${res.statusCode}`)
+    // console.log(`statusCode: ${res.statusCode}`)
     let data = '';
 
     // A chunk of data has been recieved.
@@ -28,7 +28,7 @@ const httpRequest = (ops, success, error) => {
     });
   });
   req.on('error', (err) => {
-    console.error(err);
+    // console.error(err);
     error && error(err);
   });
 
