@@ -1,7 +1,11 @@
 const fs = require('fs');
 
 const saveToFile = (filename, data) => {
-  fs.unlinkSync(filename);
+  try {
+    fs.unlinkSync(filename);
+  } catch (e) {
+    
+  }
   fs.appendFile(filename, JSON.stringify(data, null, 2), function (err) {
     if (err) throw err;
     // console.log('Saved!');
