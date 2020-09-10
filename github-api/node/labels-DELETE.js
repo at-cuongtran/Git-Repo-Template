@@ -1,14 +1,14 @@
 
 const httpRequest = require('../../common/http-request');
-const config = require('./env.json');
-const PORT = config.PORT || 443;
+const {config} = require('./config');
 
-console.log(`This script will DELETE all the GitHub labels\n`);
+console.log(`This script will DELETE ALL the GitHub labels
+I sure hope you know what you are doing`);
 
 const api = (method, id, res, err) => {
   httpRequest({
     host: config.BASE_GIT_API_HOST,
-    port: PORT,
+    port: config.PORT,
     path: '/repos/' + config.REPO + '/labels' + (id ? `/${id}` : ''),
     headers: {
       'Authorization': 'token ' + config.PRIVATE_TOKEN,

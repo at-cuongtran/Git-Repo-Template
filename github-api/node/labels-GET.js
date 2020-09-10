@@ -1,14 +1,12 @@
 const saveToFile = require('../../common/save-to-file');
 const httpRequest = require('../../common/http-request');
-const config = require('./env.json');
+const {config} = require('./config');
 
 console.log(`This script will get the GitHub labels from a repo to a JSON file\n`);
 
-const PORT = config.PORT || 443;
-
 httpRequest({
   host: config.BASE_GIT_API_HOST,
-  port: PORT,
+  port: config.PORT,
   path: '/repos/' + config.REPO + '/labels',
   headers: {
     'Authorization': 'token ' + config.PRIVATE_TOKEN,

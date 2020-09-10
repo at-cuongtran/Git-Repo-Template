@@ -8,6 +8,7 @@
     "simple-git": "^2.12.0"
   },
   "scripts": {
+    "label:post": "node ./github-api/node/labels-POST",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {

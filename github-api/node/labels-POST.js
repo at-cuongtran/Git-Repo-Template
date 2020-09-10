@@ -1,17 +1,13 @@
 const labels = require('../labels');
 const httpRequest = require('../../common/http-request');
-const config = require('./env.json');
+const {config} = require('./config');
 
-console.log(`This script will remove the GitHub default labels 
-and create the Array Digital process labels for your repo. 
-A personal access token is required to access private repos.\n`);
-
-const PORT = config.PORT || 443;
+console.log(`This script will add new labels to your repo\n`);
 
 const labelsRequestCommon = (method, data) => {
   httpRequest({
     host: config.BASE_GIT_API_HOST,
-    port: PORT,
+    port: config.PORT,
     path: '/repos/' + config.REPO + '/labels',
     headers: {
       'Authorization': 'token ' + config.PRIVATE_TOKEN,
