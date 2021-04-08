@@ -3,7 +3,7 @@ const httpRequest = require('../../common/http-request');
 const {config} = require('./config');
 
 console.log(`This script will get the GitHub labels from a repo to a JSON file\n`);
-
+console.log(config.REPO);
 httpRequest({
   host: config.BASE_GIT_API_HOST,
   port: config.PORT,
@@ -14,6 +14,9 @@ httpRequest({
   },
   method: 'GET',
 }, res => {
+  console.log(res);
   d = res.map(({name, color, description}) => ({name, color, description}));
   saveToFile(config.REPO.split('/')[1] + '.json', d);
+}, e => {
+  console.log(e);
 })

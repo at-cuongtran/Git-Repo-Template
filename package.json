@@ -1,5 +1,5 @@
 {
-  "name": "git-repo-template",
+  "name": "git-utilities",
   "version": "1.0.0",
   "description": "git utils",
   "main": "index.js",
@@ -9,6 +9,8 @@
   },
   "scripts": {
     "label:post": "node ./github-api/node/labels-POST",
+    "label:get": "node ./github-api/node/labels-GET",
+    "label:delete": "node ./github-api/node/labels-DELETE",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
